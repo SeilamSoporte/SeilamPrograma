@@ -1,0 +1,16 @@
+.modal-content{
+	background-color: transparent !important;
+}
+
+.btn-cmd{
+	color: #FFF;
+}
+
+.report{
+	background-color: #fff;
+}
+
+.modal-header {
+  padding: 1px !important;
+  border-bottom: 0px solid #e5e5e5;
+}

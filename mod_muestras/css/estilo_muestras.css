@@ -1,0 +1,49 @@
+
+.titulo{
+	color:red;
+	font-size: 12px;
+	text-decoration: bold;
+	text-align: center;
+	padding: 5px;
+}
+.form-muestra{
+	border-radius: 3px;
+	border: 1px solid #CCC;
+}
+.form{
+	padding-left: 15px;
+	padding-right: 15px;
+	padding-bottom: 10px;
+	border:0px solid #000;
+}
+.form-primer{
+	padding-left: 1px;
+	border:0px solid #000;
+}
+
+.form-ultimo{
+	padding-right: 1px;
+	border:0px solid #000;
+}
+.form-input{
+	padding-left:5px;
+	padding-right:5px;
+}
+.th{
+	font-size: 1.0em;
+	font-weight: bold;
+}
+.td{
+	min-width: 155px;
+}
+.parametros{
+	border-top: 1px solid #C3C3C3;
+	border-bottom: 1px solid #C3C3C3;
+}
+.filas{
+	margin: 15px;
+}
+.subtitulo{
+	text-align: center;
+	padding-bottom: 10px;
+}

@@ -1,0 +1,80 @@
+div#container
+{
+   width: 100%;
+   position: relative;
+   margin: 0 auto 0 auto;
+   text-align: left;
+}
+body
+{
+   background-color: #FCFCFC !important;
+   color: #000;
+   font-family: Arial;
+   font-weight: normal;
+   font-size: 13px;
+   line-height: 1.1875;
+   margin:0;
+   text-align: center;
+}
+
+#Error{
+  color:#a94442;
+  font-size: 15px;
+}
+.modal-title{
+  color: #FFF;
+}
+.login{
+  height: 40px !important;
+  font-size: 15px !important;
+  text-align: center;
+  color:#333 !important;
+  background-color: #DDF !important;
+  font-family:'Myanmar Text';
+}
+.modal-footer {
+  padding: 15px !important;
+  }
+.modal-body {
+  padding: 15px !important;
+}
+
+#wb_Menu
+{  
+   position: absolute;
+   top: calc(70px - 50%);
+   width: 1020px;
+   height: 88px;
+   z-index: 1003;
+   display: block;
+   margin: 0;
+   left:12%;
+}
+#bd{
+   position: absolute;
+   top: calc(500px - 30%);
+   width: 100%;
+   display: block;
+}
+
+.bg-dark{
+   background-color:#222;
+   opacity: 0.9; 
+   font-size:13px;
+   color:#FFF;
+   border-radius:5px 5px 0px 0px;
+}
+.bg-red{
+   background-color:#843534;
+   font-size:13px;
+   color:#FFF;
+   border-radius:5px 5px 0px 0px;
+}
+.text-danger .tx-18{
+  font-size: 18px;
+}
+
+.text-usuario{
+ font-size: 18px;
+ color: #000; 
+}
