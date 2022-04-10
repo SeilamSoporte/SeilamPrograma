@@ -14,7 +14,7 @@ class Conexion  // se declara una clase para hacer la conexion con la base de da
 		$conection['base']="DB_S";           //base de datos		
 		// crea la conexion pasandole el servidor , usuario y clave
 
-		$conect= mysql_connect($conection['server'],$conection['user'],$conection['pass']);
+		$conect= mysqli_connect($conection['server'],$conection['user'],$conection['pass']);
 
 		if ($conect) // si la conexion fue exitosa , selecciona la base
 		{
