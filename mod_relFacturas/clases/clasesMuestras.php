@@ -63,7 +63,7 @@ class sQuery   // se declara una clase para poder ejecutar las consultas, esta c
         $rows=array();
 		if ($this->consulta)
 		{
-			while($row=  mysqli_fecth_array($this->consulta))
+			while($row=  mysql_fetch_array($this->consulta))
 			{
 				$rows[]=$row;
 			}
@@ -83,7 +83,7 @@ class sQuery   // se declara una clase para poder ejecutar las consultas, esta c
     function filas(){
     	$mensaje ='';
     	$resultados="";
-    	while($resultados = mysqli_fecth_array($this->consulta)) {
+    	while($resultados = mysql_fetch_array($this->consulta)) {
 			$Id = $resultados['Id'];
 			$mensaje .= '
 				<tr>
@@ -140,7 +140,7 @@ class Muestras
 	{
 		$obj_muestra =new sQuery();
 		$result = $obj_muestra ->executeQuery("SELECT rel_facturas.N_Factura FROM rel_facturas WHERE Id_muestra=$Id");
-		$row 	=  mysqli_fecth_array($result);
+		$row 	=  mysql_fetch_array($result);
 		return $row['N_Factura'];
 	}
 	
@@ -154,7 +154,7 @@ class Muestras
     	$obj_factura 	= new sQuery();
     	$query 		 	= "SELECT * FROM rel_facturas WHERE Id_muestra = $Id";
     	$result 	 	= $obj_factura->executeQuery($query);
-    	$row 		 	= mysqli_fecth_array($result);
+    	$row 		 	= mysql_fetch_array($result);
 
     	if (count($row)>1){
 			$query 		= "UPDATE rel_facturas SET N_Factura = '$this->Factura' WHERE Id_muestra = $this->Id";

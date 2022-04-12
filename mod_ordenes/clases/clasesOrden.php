@@ -63,7 +63,7 @@ class sQuery   // se declara una clase para poder ejecutar las consultas, esta c
         $rows=array();
 		if ($this->consulta)
 		{
-			while($row=  mysqli_fecth_array($this->consulta))
+			while($row=  mysql_fetch_array($this->consulta))
 			{
 				$rows[]=$row;
 			}
@@ -178,7 +178,7 @@ class Muestras
 		else{
 			$obj_muestra = new sQuery();
 			$result 	 = $obj_muestra->executeQuery("SELECT MAX(CN) AS Max FROM detalles_muestra WHERE Codigo_M=$nro");
-			$row 		 = mysqli_fecth_array($result);
+			$row 		 = mysql_fetch_array($result);
 			return $row["Max"];	
 		}
 	}
@@ -186,7 +186,7 @@ class Muestras
 	{
 		$obj_muestra = new sQuery();
 		$result 	 = $obj_muestra->executeQuery("SELECT MAX(Id) AS Max FROM muestras");
-		$row 		 = mysqli_fecth_array($result);
+		$row 		 = mysql_fetch_array($result);
 		return $row["Max"];	
 	}
 	function Muestra($nro=0) // declara el constructor, si trae el numero de usuario lo busca , si no, trae todos los usuarios
@@ -195,7 +195,7 @@ class Muestras
 		{
 			$obj_muestra = new sQuery();
 			$result 	 = $obj_muestra->executeQuery("SELECT * FROM muestras WHERE Id= $nro");
-			$row 		 = mysqli_fecth_array($result);
+			$row 		 = mysql_fetch_array($result);
 				
 			$this->Id		  	 = $row['Id'];
 			$this->Codigo	  	 = $row['Codigo'];

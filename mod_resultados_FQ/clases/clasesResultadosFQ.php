@@ -64,7 +64,7 @@ class sQuery   // se declara una clase para poder ejecutar las consultas, esta c
         $rows=array();
 		if ($this->consulta)
 		{
-			while($row=  mysqli_fecth_array($this->consulta))
+			while($row=  mysql_fetch_array($this->consulta))
 			{
 				$rows[]=$row;
 			}
@@ -125,7 +125,7 @@ class Muestras
 	function getClase($Id){
 		$obj_clase  = new sQuery();
 		$result 	 = $obj_clase->executeQuery("SELECT * FROM lista_clases WHERE Id=$Id ");
-	    $row 		 = mysqli_fecth_array($result);
+	    $row 		 = mysql_fetch_array($result);
 		if(count($row)!=1){
 			$this->Clase = $row['Clase'];
 		}
@@ -136,7 +136,7 @@ class Muestras
 	function getCategoria($Id){
 		$obj_cat  	 = new sQuery();
 		$result 	 = $obj_cat->executeQuery("SELECT * FROM categorias WHERE Id=$Id ");
-	    $row 		 = mysqli_fecth_array($result);
+	    $row 		 = mysql_fetch_array($result);
 		if(count($row)!=1){
 			$this->Categ = $row['Categoria'];
 		}	
@@ -197,14 +197,14 @@ class Muestras
 	function getCaracteristicas($Id=0, $Nro=0){
 		$obj_caract  = new sQuery();
 		$result 	 = $obj_caract->executeQuery("SELECT Caracteristicas FROM detalles_muestra WHERE Codigo_M=$Id AND CN=$Nro");
-	    $row 		 = mysqli_fecth_array($result);
+	    $row 		 = mysql_fetch_array($result);
 	    return $row['Caracteristicas'];
 	}
 	function DetallesMuestras($Id=0, $Nro=0) // declara el constructor, si trae el numero de usuario lo busca , si no, trae todos los datos
 	{
 		$obj_muestra = new sQuery();
 		$result 	 = $obj_muestra->executeQuery("SELECT * FROM detalles_muestra WHERE Codigo_M=$Id AND CN=$Nro ORDER BY CN ASC");
-	    $row 		 = mysqli_fecth_array($result);
+	    $row 		 = mysql_fetch_array($result);
 		if(count($row)!=1){
 			
 		    $this->Codigo_M		= $row['Codigo_M'];
@@ -256,7 +256,7 @@ class Muestras
 		else{
 			$obj_muestra = new sQuery();
 			$result 	 = $obj_muestra->executeQuery("SELECT MAX(CN) AS Max FROM detalles_muestra WHERE Codigo_M=$nro");
-			$row 		 = mysqli_fecth_array($result);
+			$row 		 = mysql_fetch_array($result);
 			return $row["Max"];	
 		}
 	}
@@ -264,7 +264,7 @@ class Muestras
 	{
 		$obj_muestra = new sQuery();
 		$result 	 = $obj_muestra->executeQuery("SELECT MAX(Id) AS Max FROM muestras");
-		$row 		 = mysqli_fecth_array($result);
+		$row 		 = mysql_fetch_array($result);
 		return $row["Max"];	
 	}
 	function Muestra($nro=0) // declara el constructor, si trae el numero de usuario lo busca , si no, trae todos los usuarios
@@ -275,7 +275,7 @@ class Muestras
 			$result 	 = $obj_muestra->executeQuery("SELECT muestras.*, clientes.Empresa as Nombre_cliente 
 				FROM muestras JOIN clientes 
 					ON muestras.Id= $nro AND clientes.Id=muestras.Cliente ");
-			$row 		 = mysqli_fecth_array($result);
+			$row 		 = mysql_fetch_array($result);
 				
 			$this->Id		  	= $row['Id'];
 			$this->Codigo	  	= $row['Codigo'];
@@ -362,7 +362,7 @@ class Muestras
 		$obj_muestra=new sQuery();
 		#$Estado = "Modificado/Actualizado";
 		$result 	 = $obj_muestra->executeQuery("SELECT * FROM Resultados WHERE Codigo_M = '$this->Codigo_M' AND CN = '$this->Consecutivo'");
-	    $row 		 = mysqli_fecth_array($result);
+	    $row 		 = mysql_fetch_array($result);
 		$Estado 	 = $row['Estado'];
 
 		#$Fecha  = date('Y-m-d');
