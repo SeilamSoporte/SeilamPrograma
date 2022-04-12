@@ -65,7 +65,7 @@ class sQuery   // se declara una clase para poder ejecutar las consultas, esta c
         $rows=array();
         if ($this->consulta)
         {
-            while($row=  mysql_fetch_array($this->consulta))
+            while($row=  mysqli_fecth_array($this->consulta))
             {
                 $rows[]=$row;
             }
@@ -115,7 +115,7 @@ class Usuarios
         {
             $obj_usuario    = new sQuery();
             $result         = $obj_usuario->executeQuery("SELECT * FROM usuarios WHERE id = $nro"); // ejecuta la consulta para traer al usuario 
-            $row=mysql_fetch_array($result);
+            $row=mysqli_fecth_array($result);
              
             $this->Id        = $row['id'];
             $this->Nombre    = $row['Nombre'];
@@ -154,7 +154,7 @@ class Usuarios
     {
         $obj_usuario    = new sQuery();
         $result         = $obj_usuario->executeQuery("select foto from usuarios where id = $nro"); // ejecuta la consulta para traer al usuario 
-        $row=mysql_fetch_array($result);
+        $row=mysqli_fecth_array($result);
         echo $row[0]; 
     }
     // metodos que devuelven valores

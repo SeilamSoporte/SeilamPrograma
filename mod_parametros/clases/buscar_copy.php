@@ -126,7 +126,7 @@ class sQueryP   												// se declara una clase para poder ejecutar las cons
     function filas(){
     	$mensaje ='';
     	$resultados="";
-    	while($resultados = mysql_fetch_array($this->consulta)) {
+    	while($resultados = mysqli_fecth_array($this->consulta)) {
 			$ParametroId = $resultados['Id'];
 			$mensaje .= '
 				<tr>
@@ -164,7 +164,7 @@ class sQueryP   												// se declara una clase para poder ejecutar las cons
         $rows=array();
 		if ($this->consulta)
 		{
-			while($row=  mysql_fetch_array($this->consulta))
+			while($row=  mysqli_fecth_array($this->consulta))
 			{
 				$rows[]=$row;
 			}

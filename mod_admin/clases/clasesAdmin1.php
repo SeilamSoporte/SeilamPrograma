@@ -65,7 +65,7 @@ class sQuery   // se declara una clase para poder ejecutar las consultas, esta c
         $rows=array();
 		if ($this->consulta)
 		{
-			while($row=  mysql_fetch_array($this->consulta))
+			while($row=  mysqli_fecth_array($this->consulta))
 			{
 				$rows[]=$row;
 			}

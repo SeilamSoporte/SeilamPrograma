@@ -66,7 +66,7 @@ class sQuery   												// se declara una clase para poder ejecutar las consu
         $rows=array();
 		if ($this->consulta)
 		{
-			while($row=  mysql_fetch_array($this->consulta))
+			while($row=  mysqli_fecth_array($this->consulta))
 			{
 				$rows[]=$row;
 			}
@@ -86,7 +86,7 @@ class sQuery   												// se declara una clase para poder ejecutar las consu
 	function filas(){
     	$mensaje ='';
     	$resultados="";
-    	while($resultados = mysql_fetch_array($this->consulta)) {
+    	while($resultados = mysqli_fecth_array($this->consulta)) {
 			$ClienteId = $resultados['Id'];
 			$mensaje .= '
 				<tr>
@@ -147,7 +147,7 @@ class Clientes
 		{
 			$obj_cliente	= new sQuery();
 			$result			= $obj_cliente->executeQuery("SELECT * FROM clientes WHERE Id = $nro"); // ejecuta la consulta para traer al usuario 
-			$row			= mysql_fetch_array($result);
+			$row			= mysqli_fecth_array($result);
 			
 			$this->Id		= $row['Id'];
 			$this->Empresa	= $row['Empresa'];
@@ -310,7 +310,7 @@ class Contactos
 	{
 		$obj_contactos	= new sQuery();
 		$obj_contactos	->executeQuery("SELECT * FROM contactos WHERE Id_Cliente=$id"); 	// ejecuta la consulta para traer al contacto
-		//return count(mysql_fetch_array($result)); 
+		//return count(mysqli_fecth_array($result)); 
 		return $obj_contactos->fetchAll();								// retorna todos los contactos
 	}
 
@@ -320,7 +320,7 @@ class Contactos
 		{
 			$obj_contacto= new sQuery();
 			$result			= $obj_contacto->executeQuery("SELECT * FROM contactos WHERE Id_Cliente = $nro"); // ejecuta la consulta para traer al contacto 
-			$row			= mysql_fetch_array($result);
+			$row			= mysqli_fecth_array($result);
 			
 			//$this->Id 		= $row['Id'];
 			$this->Id_C		= $row['Id'];
@@ -420,7 +420,7 @@ class Sedes
 	{
 		$obj_contactos	= new sQuery();
 		$obj_contactos	->executeQuery("SELECT * FROM sedes WHERE Id_Cliente=$id"); 	// ejecuta la consulta para traer al contacto
-		//return count(mysql_fetch_array($result)); 
+		//return count(mysqli_fecth_array($result)); 
 		return $obj_contactos->fetchAll();								// retorna todos los contactos
 	}
 
@@ -430,7 +430,7 @@ class Sedes
 		{
 			$obj_contacto= new sQuery();
 			$result			= $obj_contacto->executeQuery("SELECT * FROM sedes WHERE Id_Cliente = $nro"); // ejecuta la consulta para traer al contacto 
-			$row			= mysql_fetch_array($result);
+			$row			= mysqli_fecth_array($result);
 			
 			$this->Id_C		= $row['Id'];
 			$this->Sede 	= $row['Sede'];

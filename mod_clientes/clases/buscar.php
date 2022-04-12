@@ -67,7 +67,7 @@ class sQuery   												// se declara una clase para poder ejecutar las consu
     function filas(){
     	$mensaje ='';
     	$resultados="";
-    	while($resultados = mysql_fetch_array($this->consulta)) {
+    	while($resultados = mysqli_fecth_array($this->consulta)) {
 			$ClienteId = $resultados['Id'];
 			$mensaje .= '
 				<tr>
@@ -96,7 +96,7 @@ class sQuery   												// se declara una clase para poder ejecutar las consu
         $rows=array();
 		if ($this->consulta)
 		{
-			while($row=  mysql_fetch_array($this->consulta))
+			while($row=  mysqli_fecth_array($this->consulta))
 			{
 				$rows[]=$row;
 			}
