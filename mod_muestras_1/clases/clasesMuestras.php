@@ -63,7 +63,7 @@
 	  $rows=array();
 		  if ($this->consulta)
 		  {
-			  while($row=  mysqli_fecthy($this->consulta))
+			  while($row=  mysql_fetch_array($this->consulta))
 			  {
 				  $rows[]=$row;
 			  }
@@ -175,7 +175,7 @@
 	  function getClase($Id){
 		  $obj_clase  = new sQuery();
 		  $result 	 = $obj_clase->executeQuery("SELECT * FROM lista_clases WHERE Id=$Id ");
-	      $row 		 = mysqli_fecthy($result);
+	      $row 		 = mysql_fetch_array($result);
 		  if(count($row)!=1){
 			  $this->Clase = $row['Clase'];
 		  }
@@ -183,7 +183,7 @@
 	  function getCategoria($Id){
 		  $obj_cat  = new sQuery();
 		  $result 	 = $obj_cat->executeQuery("SELECT * FROM categorias WHERE Id=$Id ");
-	      $row 		 = mysqli_fecthy($result);
+	      $row 		 = mysql_fetch_array($result);
 		  if(count($row)!=1){
 			  $this->Categ = $row['Categoria'];
 		  }	
@@ -244,7 +244,7 @@
 	  {
 		  $obj_muestra = new sQuery();
 		  $result 	 = $obj_muestra->executeQuery("SELECT * FROM detalles_muestra WHERE Codigo_M=$nro AND CN=$Nro ORDER BY CN ASC");
-	      $row 		 = mysqli_fecthy($result);
+	      $row 		 = mysql_fetch_array($result);
 		  if(count($row)!=1){
 			  
 		      $this->Codigo_M		= $row['Codigo_M'];
@@ -301,7 +301,7 @@
 		  else{
 			  $obj_muestra = new sQuery();
 			  $result 	 = $obj_muestra->executeQuery("SELECT MAX(CN) AS Max FROM detalles_muestra WHERE Codigo_M=$nro");
-			  $row 		 = mysqli_fecthy($result);
+			  $row 		 = mysql_fetch_array($result);
 			  return $row["Max"];	
 		  }
 	  }
@@ -310,7 +310,7 @@
 	  {
 		  $obj_muestra = new sQuery();
 		  $result 	 = $obj_muestra->executeQuery("SELECT MAX(Id) AS Max FROM muestras");
-		  $row 		 = mysqli_fecthy($result);
+		  $row 		 = mysql_fetch_array($result);
 		  return $row["Max"];	
 	  }
 	  function Muestra($nro=0) // declara el constructor, si trae el numero de usuario lo busca , si no, trae todos los usuarios
@@ -321,7 +321,7 @@
 			  $result 	 = $obj_muestra->executeQuery("SELECT muestras.*, clientes.Empresa as Nombre_cliente 
 				  FROM muestras JOIN clientes 
 					  ON muestras.Id= $nro AND clientes.Id=muestras.Cliente ");
-			  $row 		 = mysqli_fecthy($result);
+			  $row 		 = mysql_fetch_array($result);
 				  
 			  $this->Id		  	 = $row['Id'];
 			  $this->Codigo	  	 = $row['Codigo'];

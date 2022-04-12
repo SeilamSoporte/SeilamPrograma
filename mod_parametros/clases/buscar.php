@@ -119,20 +119,20 @@ class sQueryP   												// se declara una clase para poder ejecutar las cons
 	function Categorias($id){
 		$obj_parametro= new sQueryP();
 		$result    	  = $obj_parametro ->executeQuery("SELECT * FROM categorias WHERE Id = $id");
-		$row 	   	  = mysqli_fecthy($result);
+		$row 	   	  = mysql_fetch_array($result);
 		return $row['Categoria'];	
 	}
 	function Clases($id){
 		$obj_parametro  = new sQueryP();
 		$result    		= $obj_parametro ->executeQuery("SELECT * FROM lista_clases WHERE Id = $id");
-		$row 	   		= mysqli_fecthy($result);	
+		$row 	   		= mysql_fetch_array($result);	
 		return $row['Clase'];
 
 	}
 	function getParametros($id){
 			$obj_param= new sQueryP();
 			$result    = $obj_param ->executeQuery("SELECT * FROM lista_parametros WHERE Id = '$id'");
-			$row 	   = mysqli_fecthy($result);	
+			$row 	   = mysql_fetch_array($result);	
 			//$this->ListaParams = $row['Nombre'];
 			return $row['Nombre'];
 	}
@@ -140,14 +140,14 @@ class sQueryP   												// se declara una clase para poder ejecutar las cons
 	function getConsulta($tabla, $campo, $id){
 			$obj_consulta = new sQueryP();
 			$result       = $obj_consulta->executeQuery("SELECT * FROM $tabla WHERE Id = '$id'");
-			$row 	      = mysqli_fecthy($result);	
+			$row 	      = mysql_fetch_array($result);	
 			return $row[$campo];
 	}
 
     function filas(){
     	$mensaje ='';
     	$resultados="";
-    	while($resultados = mysqli_fecthy($this->consulta)) {
+    	while($resultados = mysql_fetch_array($this->consulta)) {
 			$ParametroId  = $resultados['Id'];
 			$IdCat		  = ($resultados['Categoria']);
 			$Categoria 	  = $this->Categorias($resultados['Categoria']);
@@ -236,7 +236,7 @@ class sQueryP   												// se declara una clase para poder ejecutar las cons
         $rows=array();
 		if ($this->consulta)
 		{
-			while($row=  mysqli_fecthy($this->consulta))
+			while($row=  mysql_fetch_array($this->consulta))
 			{
 				$rows[]=$row;
 			}
