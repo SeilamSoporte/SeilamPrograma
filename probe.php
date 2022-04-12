@@ -9,15 +9,15 @@ class Conexion  // se declara una clase para hacer la conexion con la base de da
 		// se definen los datos del servidor de base de datos 
 		$conection['server']="localhost";  //host
 		$conection['user']="root";         //  usuario
-		$conection['pass']="wWLB2TvXpHdWLNFC";             //password
+		$conection['pass']="mugres74Root";             //password
 		$conection['base']="zeuss_db";     //base de datos		
 		// crea la conexion pasandole el servidor , usuario y clave
-		$conect= mysql_connect($conection['server'],$conection['user'],$conection['pass']);
+		$conect= mysqli_connect($conection['server'],$conection['user'],$conection['pass']);
 		
 		if ($conect) // si la conexion fue exitosa , selecciona la base
 		{
-			mysql_select_db($conection['base']);		
-			mysql_query("SET NAMES 'utf8'");	
+			mysqli_select_db($conection['base']);		
+			mysqli_query("SET NAMES 'utf8'");	
 			$this->con=$conect;
 		}
 	}
