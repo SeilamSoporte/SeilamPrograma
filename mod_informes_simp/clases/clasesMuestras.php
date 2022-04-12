@@ -63,7 +63,7 @@ class sQuery   // se declara una clase para poder ejecutar las consultas, esta c
         $rows=array();
 		if ($this->consulta)
 		{
-			while($row=  mysql_fetch_array($this->consulta))
+			while($row=  mysqli_fecthy($this->consulta))
 			{
 				$rows[]=$row;
 			}
@@ -207,7 +207,7 @@ class Muestras
 	{
 		$obj_muestra = new sQuery();
 		$result 	 = $obj_muestra->executeQuery("SELECT * FROM detalles_muestra WHERE Codigo_M=$Id AND CN=$Nro ORDER BY CN ASC");
-	    $row 		 = mysql_fetch_array($result);
+	    $row 		 = mysqli_fecthy($result);
 		if(count($row)!=1){
 			
 		    $this->Codigo_M		= $row['Codigo_M'];
@@ -260,7 +260,7 @@ class Muestras
 		else{
 			$obj_muestra = new sQuery();
 			$result 	 = $obj_muestra->executeQuery("SELECT MAX(CN) AS Max FROM detalles_muestra WHERE Codigo_M=$nro");
-			$row 		 = mysql_fetch_array($result);
+			$row 		 = mysqli_fecthy($result);
 			return $row["Max"];	
 		}
 	}
@@ -268,7 +268,7 @@ class Muestras
 	{
 		$obj_muestra = new sQuery();
 		$result 	 = $obj_muestra->executeQuery("SELECT MAX(Id) AS Max FROM muestras");
-		$row 		 = mysql_fetch_array($result);
+		$row 		 = mysqli_fecthy($result);
 		return $row["Max"];	
 	}
 	function Muestra($nro=0) // declara el constructor, si trae el numero de usuario lo busca , si no, trae todos los usuarios
@@ -279,7 +279,7 @@ class Muestras
 			$result 	 = $obj_muestra->executeQuery("SELECT muestras.*, clientes.Empresa as Nombre_cliente 
 				FROM muestras JOIN clientes 
 					ON muestras.Id= $nro AND clientes.Id=muestras.Cliente ");
-			$row 		 = mysql_fetch_array($result);
+			$row 		 = mysqli_fecthy($result);
 				
 			$this->Id		  	= $row['Id'];
 			$this->Codigo	  	= $row['Codigo'];

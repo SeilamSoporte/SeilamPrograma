@@ -387,13 +387,13 @@ function SetResComparador($Id){
 
 	$obj_usuario		= new sQuery();
 	$result1			= $obj_usuario->executeQuery("SELECT * FROM usuarios WHERE id = ".$FirmaRFQ['id']); //
-	$rowRFQ				= mysql_fetch_array($result1);
+	$rowRFQ				= mysqli_fecthy($result1);
 	$result2			= $obj_usuario->executeQuery("SELECT * FROM usuarios WHERE id = ".$FirmaRMB['id']); // 
-	$rowRMB				= mysql_fetch_array($result2);
+	$rowRMB				= mysqli_fecthy($result2);
 	$result3			= $obj_usuario->executeQuery("SELECT * FROM usuarios WHERE id = ".$FirmaAMB['id']); // 
-	$rowAMB				= mysql_fetch_array($result3);
+	$rowAMB				= mysqli_fecthy($result3);
 	$result4			= $obj_usuario->executeQuery("SELECT * FROM usuarios WHERE id = ".$FirmaAFQ['id']); //
-	$rowAFQ				= mysql_fetch_array($result4);
+	$rowAFQ				= mysqli_fecthy($result4);
 	
 	$ImgFirmaRFQ = $rowRFQ['foto'];
 	$ImgFirmaRMB = $rowRMB['foto'];
