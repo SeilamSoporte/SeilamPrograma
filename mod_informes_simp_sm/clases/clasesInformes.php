@@ -63,7 +63,7 @@ class sQuery   // se declara una clase para poder ejecutar las consultas, esta c
         $rows=array();
 		if ($this->consulta)
 		{
-			while($row=  mysql_fetch_array($this->consulta))
+			while($row=  mysqli_fetch_array($this->consulta))
 			{
 				$rows[]=$row;
 			}
@@ -94,7 +94,7 @@ class Clientes
 	{
 		$obj_clientes 	= new sQuery();
 		$result 	 	= $obj_clientes-> executeQuery("SELECT * FROM clientes WHERE Id=$id");
-		$row 		    = mysql_fetch_array($result);
+		$row 		    = mysqli_fetch_array($result);
 		if(count($row)!=1){
 			$this->Direccion 	=$row['Direccion'];
 			$this->Telefono  	=$row['Telefono'];
@@ -153,7 +153,7 @@ class Muestras
 	{
 		$obj_resultados = new sQuery();
 		$result =  $obj_resultados->executeQuery("SELECT * FROM `resultados` WHERE Codigo_M=$cod AND CN=$CN");
-	    $row = mysql_fetch_array($result);	
+	    $row = mysqli_fetch_array($result);	
 	    if(count($row)!=1){
 			$this->Resultados    = $row['Resultados'];
 			$this->Fecha_result	 = $row['Fecha'];
@@ -173,7 +173,7 @@ class Muestras
 	{
 		$obj_resultados = new sQuery();
 		$result= $obj_resultados->executeQuery("SELECT * FROM orden_inf_simp WHERE Id_muestra =$id");
-	    $row = mysql_fetch_array($result);
+	    $row = mysqli_fetch_array($result);
 	    if(count($row)!=1){
 	     	return $obj_resultados->executeQuery("UPDATE `orden_inf_simp` SET `Orden`= '$datos' WHERE Id_muestra = $id");
 	    }
@@ -189,7 +189,7 @@ class Muestras
 	{
 		$obj_resultados = new sQuery();
 		$result= $obj_resultados->executeQuery("SELECT * FROM orden_inf_simp WHERE Id_muestra =$id AND NInf = $ninf");
-	    $row = mysql_fetch_array($result);
+	    $row = mysqli_fetch_array($result);
 	    if(count($row)!=1){
 	     	return $obj_resultados->executeQuery("UPDATE `orden_inf_simp` SET `Detalles`= '$datos' WHERE Id_muestra = $id AND NInf = $ninf");
 	    }
@@ -204,7 +204,7 @@ class Muestras
 	{
 		$obj_resultados = new sQuery();
 		$result= $obj_resultados->executeQuery("SELECT * FROM orden_inf_simp WHERE Id_muestra =$id AND NInf = $ninf");
-	    $row = mysql_fetch_array($result);
+	    $row = mysqli_fetch_array($result);
 	    if(count($row)!=1){
 	     	return $obj_resultados->executeQuery("UPDATE `orden_inf_simp` SET `Observaciones`= '$datos' WHERE Id_muestra = $id AND NInf = $ninf");
 	    }
@@ -219,7 +219,7 @@ class Muestras
 	{
 		$obj_resultados = new sQuery();
 		$result= $obj_resultados->executeQuery("SELECT * FROM orden_inf_simp WHERE Id_muestra =$id AND NInf = $ninf");
-	    $row = mysql_fetch_array($result);
+	    $row = mysqli_fetch_array($result);
 	    if(count($row)!=1){
 	     	return $obj_resultados->executeQuery("UPDATE `orden_inf_simp` SET `Anotaciones`= '$datos' WHERE Id_muestra = $id AND NInf = $ninf");
 	    }
@@ -254,7 +254,7 @@ class Muestras
 	function getFirmas(){
 		$obj_firma  = new sQuery();
 		$result     = $obj_firma-> executeQuery("SELECT * FROM firmas_informes WHERE Id=1");
-		$row 	 	= mysql_fetch_array($result);
+		$row 	 	= mysqli_fetch_array($result);
 		
 		$this->FirmaAFQ = ($row['AFQ']>0) ? $this->Usuarios($row['AFQ'])[0]: Array('Nombre'=>'&nbsp;', 'Apellido'=>'&nbsp;', 'Cargo'=>'&nbsp;');
 		$this->FirmaRFQ = ($row['RFQ']>0) ? $this->Usuarios($row['RFQ'])[0]: Array('Nombre'=>'&nbsp;', 'Apellido'=>'&nbsp;', 'Cargo'=>'&nbsp;');
@@ -267,7 +267,7 @@ class Muestras
 	function getCategoria($Id){
 		$obj_cat  	= new sQuery();
 		$result 	= $obj_cat->executeQuery("SELECT * FROM categorias WHERE Id=$Id ");
-	    $row 		= mysql_fetch_array($result);
+	    $row 		= mysqli_fetch_array($result);
 		if(count($row)!=1){
 			$this->Categ = $row['Categoria'];
 		}	
@@ -278,7 +278,7 @@ class Muestras
 		function getClase($Id){
 		$obj_clase  = new sQuery();
 		$result 	 = $obj_clase->executeQuery("SELECT * FROM lista_clases WHERE Id=$Id ");
-	    $row 		 = mysql_fetch_array($result);
+	    $row 		 = mysqli_fetch_array($result);
 		if(count($row)!=1){
 			$this->Clase = $row['Clase'];
 		}
@@ -301,7 +301,7 @@ class Muestras
 	function getParametros($Id=0){
 		$obj_parametro=new sQuery();
 		$result = $obj_parametro->executeQuery("SELECT * FROM lista_parametros WHERE Id=$Id"); 
-		$row    = mysql_fetch_array($result);
+		$row    = mysqli_fetch_array($result);
 		return $row['Nombre'];
 		//return $obj_parametro->fetchAll(); // retorna todos los parametros
 	}
@@ -367,7 +367,7 @@ class Muestras
 	{
 		$obj_observac= new sQuery();
 		$result 	 = $obj_observac->executeQuery("SELECT * FROM observaciones WHERE Clase='$Clase' AND Cump='$Cumpl'");
-	    $row 		 = mysql_fetch_array($result);
+	    $row 		 = mysqli_fetch_array($result);
 		if(count($row)!=1){	
 			$this->Obs_cumplimiento = $row['Observacion'];
 		}
@@ -380,7 +380,7 @@ class Muestras
 	{
 		$obj_muestra = new sQuery();
 		$result 	 = $obj_muestra->executeQuery("SELECT * FROM detalles_muestra WHERE Codigo_M=$Id AND CN=$Nro ORDER BY CN ASC");
-	    $row 		 = mysql_fetch_array($result);
+	    $row 		 = mysqli_fetch_array($result);
 		if(count($row)!=1){
 			
 		    $this->Codigo_M		= $row['Codigo_M'];
@@ -437,7 +437,7 @@ class Muestras
 		else{
 			$obj_muestra = new sQuery();
 			$result 	 = $obj_muestra->executeQuery("SELECT MAX(CN) AS Max FROM detalles_muestra WHERE Codigo_M=$nro");
-			$row 		 = mysql_fetch_array($result);
+			$row 		 = mysqli_fetch_array($result);
 			return $row["Max"];	
 		}
 	}
@@ -446,7 +446,7 @@ class Muestras
 	{
 		$obj_muestra = new sQuery();
 		$result 	 = $obj_muestra->executeQuery("SELECT MAX(Id) AS Max FROM muestras");
-		$row 		 = mysql_fetch_array($result);
+		$row 		 = mysqli_fetch_array($result);
 		return $row["Max"];	
 	}
 
@@ -458,7 +458,7 @@ class Muestras
 			$result 	 = $obj_muestra->executeQuery("SELECT muestras.*, clientes.Empresa as Nombre_cliente 
 				FROM muestras JOIN clientes 
 					ON muestras.Id= $nro AND clientes.Id=muestras.Cliente ");
-			$row 		 = mysql_fetch_array($result);
+			$row 		 = mysqli_fetch_array($result);
 				
 			$this->Id		  	= $row['Id'];
 			$this->Codigo	  	= $row['Codigo'];
@@ -510,7 +510,7 @@ class Muestras
 		{
 			$obj_empaques=new sQuery();
 			$result 	 = $obj_empaques->executeQuery("SELECT Empaque FROM empaques WHERE Id = '$id'"); // ejecuta la consulta para traer al usuario
-			$row		 = mysql_fetch_array($result);
+			$row		 = mysqli_fetch_array($result);
 			if(count($row)!=1){
 				$this->Empaque_name	=$row['Empaque'];
 			}
@@ -527,7 +527,7 @@ class logo
 		{
 			$obj_logo	= new sQuery();
 			$result		= $obj_logo->executeQuery("SELECT Logo FROM empresa WHERE Id = 1"); // ejecuta la consulta para traer al usuario 
-			$row		= mysql_fetch_array($result);
+			$row		= mysqli_fetch_array($result);
 			$obj_logo	= $row['Logo'];
 			return $obj_logo;
 		}
@@ -559,7 +559,7 @@ class Empresa
 		{
 			$obj_empresa	= new sQuery();
 			$result			= $obj_empresa->executeQuery("SELECT * FROM empresa WHERE Id = 1"); // ejecuta la consulta para traer al usuario 
-			$row			= mysql_fetch_array($result);
+			$row			= mysqli_fetch_array($result);
 			
 			$this->Id		= 1;//$row['Id'];
 			$this->Empresa	= $row['Empresa'];

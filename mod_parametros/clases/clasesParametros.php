@@ -67,7 +67,7 @@ class sQuery   // se declara una clase para poder ejecutar las consultas, esta c
         $rows=array();
 		if ($this->consulta)
 		{
-			while($row=  mysql_fetch_array($this->consulta))
+			while($row=  mysqli_fetch_array($this->consulta))
 			{
 				$rows[]=$row;
 			}
@@ -112,7 +112,7 @@ class Parametros
 	function getClase($Id){
 			$obj_clases = new sQuery();
 			$result 	= $obj_clases ->executeQuery("SELECT * FROM lista_clases WHERE Id = $Id");
-			$row 	    = mysql_fetch_array($result);	
+			$row 	    = mysqli_fetch_array($result);	
 			$this->ListaClase= $row['Clase'];
 	}
 	function Lista_Categoria(){
@@ -125,13 +125,13 @@ class Parametros
 			$obj_categ = new sQuery();
 			$result    = $obj_categ ->executeQuery("SELECT * FROM categorias WHERE Id = $Id");
 			//return $obj_categ ->fetchAll();
-			$row 	   = mysql_fetch_array($result);	
+			$row 	   = mysqli_fetch_array($result);	
 			$this->ListaCateg = $row['Categoria'];
 	}
 	function getParametro($Id){
 			$obj_param= new sQuery();
 			$result    = $obj_param ->executeQuery("SELECT * FROM lista_parametros WHERE Id = $Id");
-			$row 	   = mysql_fetch_array($result);	
+			$row 	   = mysqli_fetch_array($result);	
 			$this->ListaParam = $row['Nombre'];
 	}
 	function Lista_Parametros() 
@@ -151,7 +151,7 @@ class Parametros
 	{ 
 		$obj_parametro	= new sQuery();
 		$result			= $obj_parametro->executeQuery("SELECT * FROM parametros WHERE Id = '$id'"); // ejecuta la consulta para traer al parametro 
-		$row 			=mysql_fetch_array($result);
+		$row 			=mysqli_fetch_array($result);
 		Parametros::getCategoria($row['Categoria']);
 		Parametros::getClase($row['Clase']);	
 		return $row['Area'].",".$this->ListaCateg.",".$this->ListaClase.",".$row['Parametros'].",".$row['Limite'].",".$row['Metodo'].",".$row['Comparador'].",".$row['Referencia'];
@@ -160,14 +160,14 @@ class Parametros
 	{ 
 		$obj_parametro	= new sQuery();
 		$result			= $obj_parametro->executeQuery("SELECT * FROM parametros WHERE Id = '$id'"); // ejecuta la consulta para traer al parametro 
-		$row 			= mysql_fetch_array($result);
+		$row 			= mysqli_fetch_array($result);
 		$IdCat 			= $row['Categoria'];
 		$IdClas			= $row['Clase'];
 		$result    		= $obj_parametro ->executeQuery("SELECT * FROM categorias WHERE Id = $IdCat");
-		$row1 	   		= mysql_fetch_array($result);
+		$row1 	   		= mysqli_fetch_array($result);
 		$Categoria 		= $row1['Categoria'];	
 		$result    		= $obj_parametro ->executeQuery("SELECT * FROM lista_clases WHERE Id = $IdClas");
-		$row2 	   		= mysql_fetch_array($result);	
+		$row2 	   		= mysqli_fetch_array($result);	
 		$Clase 			= $row2['Clase'];
 
 		return $row['Area'].",".$Categoria.",".$Clase.",".$row['Parametros'].",".$row['Limite'].",".$row['Metodo'].",".$row['Comparador'].",".$row['Referencia'].",".$row['Tipo'];
@@ -178,7 +178,7 @@ class Parametros
 		{
 			$obj_parametro	 = new sQuery();
 			$result			 = $obj_parametro->executeQuery("SELECT * FROM parametros WHERE Id = $nro"); // ejecuta la consulta para traer al parametro 
-			$row 			 =mysql_fetch_array($result);
+			$row 			 =mysqli_fetch_array($result);
 			
 			$this->Id		 = $row['Id'];
 			$this->Codigo	 = $row['Codigo'];

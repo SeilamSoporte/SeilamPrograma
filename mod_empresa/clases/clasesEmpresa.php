@@ -67,7 +67,7 @@ class sQuery   // se declara una clase para poder ejecutar las consultas, esta c
         $rows=array();
 		if ($this->consulta)
 		{
-			while($row=  mysql_fetch_array($this->consulta))
+			while($row=  mysqli_fetch_array($this->consulta))
 			{
 				$rows[]=$row;
 			}
@@ -93,7 +93,7 @@ class logo
 		{
 			$obj_logo	= new sQuery();
 			$result		= $obj_logo->executeQuery("SELECT Logo FROM empresa WHERE Id = 1"); // ejecuta la consulta para traer al usuario 
-			$row		= mysql_fetch_array($result);
+			$row		= mysqli_fetch_array($result);
 			$obj_logo	= $row['Logo'];
 			return $obj_logo;
 		}
@@ -125,7 +125,7 @@ class Empresa
 		{
 			$obj_empresa	= new sQuery();
 			$result			= $obj_empresa->executeQuery("SELECT * FROM empresa WHERE Id = 1"); // ejecuta la consulta para traer al usuario 
-			$row			= mysql_fetch_array($result);
+			$row			= mysqli_fetch_array($result);
 			
 			$this->Id		= 1;//$row['Id'];
 			$this->Empresa	= $row['Empresa'];
