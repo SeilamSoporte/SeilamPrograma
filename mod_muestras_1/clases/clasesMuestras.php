@@ -40,7 +40,7 @@
 	  }
 	  function executeQuery($cons)  					// metodo que ejecuta una consulta y la guarda en el atributo $pconsulta
 	  {
-		  $this->consulta= mysql_query($cons,$this->coneccion->getConexion());
+		  $this->consulta= mysqli_query($cons,$this->coneccion->getConexion());
 		  return $this->consulta;
 	  }	
 	  function getResults()   						// retorna la consulta en forma de result.
